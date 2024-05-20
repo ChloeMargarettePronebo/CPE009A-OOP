@@ -1,0 +1,136 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPUtC8vS8xk6PO4QwVKuK0d",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/ChloeMargarettePronebo/CPE009A-OOP/blob/main/Activity_4.1\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "1.Create a function that would accept two inputs: a sentence(string), and a list\n",
+        "containing bad words that the user would like to censor but not remove. The\n",
+        "function should return the newly filtered sentence wherein the bad words are\n",
+        "replaced with asterisks equal to the length of the censored word.\n"
+      ],
+      "metadata": {
+        "id": "PcCR4Ce7J5Vs"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "4Y9RxK5tIy6G",
+        "outputId": "1cd39065-6156-4d8b-f7a4-8297d3743598"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Shut your ******* mouth.\n"
+          ]
+        }
+      ],
+      "source": [
+        "def censor_bad_words (sentence, bad_words) :\n",
+        "  censored_sentence = sentence\n",
+        "  for word in bad_words:\n",
+        "      if word in censored_sentence:\n",
+        "        censored_sentence = censored_sentence.replace(word, '*' * len(word))\n",
+        "  return censored_sentence\n",
+        "\n",
+        "\n",
+        "sentence = \"Shut your fucking mouth.\"\n",
+        "bad_words = ['fucking']\n",
+        "censored_sentence = censor_bad_words (sentence, bad_words)\n",
+        "print (censored_sentence)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "2.Given a certain Physics problem create a function(projectilemotion_solver) that\n",
+        "would take in the following inputs below and return the needed information when\n",
+        "the function is called. Name the program containing the function\n",
+        "projectilemotion.py then create another program main_program.py and import\n",
+        "projectilemotion.py “A long jumper leaves the ground at an angle of 20.0° above\n",
+        "the horizontal and at a speed of 11.0 m/s. “ (a) How far does he jump in the\n",
+        "horizontal direction? (b) What is the maximum height reached? Given a projectile\n",
+        "motion problem like this where the angle and speed are given, the range or\n",
+        "distance travelled in the horizontal direction can be determined by using the"
+      ],
+      "metadata": {
+        "id": "dkxUQVzMKMIZ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import math\n",
+        "\n",
+        "def projectilemotion_solver(angle_deg, speed):\n",
+        "    angle_rad = math.radians(angle_deg)\n",
+        "    g = 9.81\n",
+        "\n",
+        "    horizontal_distance = (speed ** 2) * math.sin(2 * angle_rad) / g\n",
+        "\n",
+        "    maximum_height = (speed ** 2) * (math.sin(angle_rad) ** 2) / (2 * g)\n",
+        "\n",
+        "    return horizontal_distance, maximum_height\n",
+        "    from projectilemotion import projectilemotion_solver\n",
+        "if __name__ == \"__main__\":\n",
+        "    angle = 20.0\n",
+        "    speed = 11.0\n",
+        "\n",
+        "    horizontal_distance, maximum_height = projectilemotion_solver(angle, speed)\n",
+        "\n",
+        "    print (\"Horizontal distance:\", horizontal_distance, \"m\")\n",
+        "    print (\"Maximum height:\", maximum_height, \"m\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "xy4Bv0iWLhQb",
+        "outputId": "2c473c03-2931-4191-f6d2-21e8248aa633"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Horizontal distance: 7.928369089915519 m\n",
+            "Maximum height: 0.7214225887513673 m\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
